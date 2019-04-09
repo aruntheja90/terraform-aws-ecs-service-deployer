@@ -5,9 +5,9 @@ module "lambda_role" {
   descriptive_name = "${local.lambda_name}"
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_basic_role" {
-  role       = "${module.lambda_role.role_name}"
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+resource "aws_iam_role_policy" "lambda_policy" {
+  role   = "${module.lambda_role.role_name}"
+  policy = "${data.aws_iam_policy_document.lambda_policy.json}"
 }
 
 module "lambda_name" {
