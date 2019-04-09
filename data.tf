@@ -1,5 +1,6 @@
-data "aws_iam_policy_document" "cloudwatchlogs_policy" {
-  statement = {
+data "aws_iam_policy_document" "lambda_policy" {
+  statement {
+    sid    = "AllowWriteLog"
     effect = "Allow"
 
     actions = [
@@ -10,5 +11,18 @@ data "aws_iam_policy_document" "cloudwatchlogs_policy" {
     resources = [
       "${aws_cloudwatch_log_group.log_group.arn}/*",
     ]
+  }
+
+  statement {
+    sid    = "AllowUpdateService"
+    effect = "Allow"
+
+    actions = [
+      "ecs:UpdateService",
+      "ecs:RegisterTaskDefinition",
+      "ecs:DescribeTaskDefinition",
+    ]
+
+    resources = ["*"]
   }
 }

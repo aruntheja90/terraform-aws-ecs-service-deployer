@@ -29,7 +29,7 @@ resource "aws_lambda_function" "lambda" {
 
   role        = "${module.lambda_role.role_arn}"
   runtime     = "python3.6"
-  handler     = "main.handler"
+  handler     = "deploy.handler"
   memory_size = "128"
   timeout     = "60"
 
