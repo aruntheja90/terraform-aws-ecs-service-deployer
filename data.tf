@@ -21,6 +21,7 @@ data "aws_iam_policy_document" "lambda_policy" {
       "ecs:UpdateService",
       "ecs:RegisterTaskDefinition",
       "ecs:DescribeTaskDefinition",
+      "iam:PassRole",               # allow passing execution role
     ]
 
     resources = ["*"]
