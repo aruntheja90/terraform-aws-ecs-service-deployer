@@ -42,7 +42,7 @@ resource "aws_lambda_function" "lambda" {
     variables = {
       ECS_CLUSTER = "${var.ecs_cluster}"
       ECS_SERVICE = "${var.ecs_service}"
-      ECS_TAKDEF  = "${var.ecs_taskdef}"
+      ECS_TASKDEF = "${var.ecs_taskdef}"
       IMAGE_NAME  = "${var.image_name}"
     }
   }
