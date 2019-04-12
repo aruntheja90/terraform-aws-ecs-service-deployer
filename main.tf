@@ -19,7 +19,7 @@ module "lambda_name" {
 
 data "archive_file" "bundle" {
   type        = "zip"
-  source_file = "${path.module}/deploy.py"
+  source_file = "${path.module}/lambda-handler"
   output_path = ".terraform/tmp/lambda.zip"
 }
 
@@ -28,8 +28,8 @@ resource "aws_lambda_function" "lambda" {
   description   = "${local.lambda_description}"
 
   role        = "${module.lambda_role.role_arn}"
-  runtime     = "python3.6"
-  handler     = "deploy.handler"
+  runtime     = "go1.x"
+  handler     = "lambda-handler"
   memory_size = "128"
   timeout     = "60"
 

@@ -31,5 +31,8 @@ setup-git-hook: .git/hooks/pre-commit
 	echo "terraform fmt | xargs git add" >> $@
 	chmod +x $@
 
+build:
+	GOOS=linux go build -ldflags='-s' -o lambda-handler main.go
+
 PHONY: autoformat validate check-format
 
