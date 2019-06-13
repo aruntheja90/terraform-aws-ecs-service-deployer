@@ -1,0 +1,6 @@
+# Compiled files
+*.tfstate
+*.tfstate.*
+
+# Module directory
+.terraform/
